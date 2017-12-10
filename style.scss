@@ -100,58 +100,59 @@ body {
 }
 
 .header--none {
-  position: relative;
   height: 100%;
   flex-grow: 1;
   border-top: 5px solid $sec-color-l;
   background-color: $main-color-d;
 }
 
-.header--none::after {
-  content: '';
-  position: absolute;
-  left: 1.8vw;
-  display: block;
-  height: 100%;
-  width: 4.4vw;
-  background-color: $main-color-d;
-  transform: skewX(var(--skew));
-}
-
 .header--short {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 15vw;
+  width: 7.7vw;
   background-image: var(--band-sec-gradient);
   font-weight: 600;
   font-size: 3em;
+}
+
+.header--short::before {
+  content: '';
+  position: absolute;
+  left: -1.5vw;
+  display: block;
+  height: 101%;
+  width: 3vw;
+  background-image: var(--band-sec-gradient);
+  transform: skewX(var(--skew));
+}
+
+.header--short::after {
+  content: '';
+  position: absolute;
+  left: 6.2vw;
+  display: block;
+  height: 100%;
+  width: 3vw;
+  background: none;
+  background-image: var(--band-sec-gradient);
+  transform: skewX(var(--skew));
+  z-index: 0;
 }
 
 .header--long {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
   height: 100%;
-  width: 81vw;
+  width: 84.7vw;
   border-bottom: 5px solid $sec-color;
   background-color: $main-color-d;
   padding-right: 2.5vw;
   font-weight: 400;
   font-size: 2.3em;
-}
-
-.header--long::before {
-  content: '';
-  position: absolute;
-  left: -2.2vw;
-  display: block;
-  height: 100%;
-  width: 4.4vw;
-  background-color: $main-color-d;
-  transform: skewX(var(--skew));
 }
 
 .header__title {
@@ -274,36 +275,33 @@ body {
 .title__segment--top-1 {
   position: relative;
   height: 100%;
-  width: 16vw;
+  width: 18vw;
   background-color: $main-color-d;
   border-top: 5px solid $sec-color-l;
 }
 
-.title__segment--top-1::after {
+.title__segment--top-2::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 14.5vw;
+  left: -1.5vw;
   display: block;
-  height: 100%;
+  height: 101%;
   width: 3vw;
-  background-color: $main-color-d;
+  background-image: var(--band-sec-gradient);
   transform: skewX(var(--skew));
-  z-index: 1;
 }
 
 .title__segment--top-2 {
   position: relative;
   height: 100%;
-  width: 13vw;
+  width: 11vw;
   background-image: var(--band-sec-gradient);
 }
 
 .title__segment--top-2::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 11.5vw;
+  left: 9.5vw;
   display: block;
   height: 100%;
   width: 3vw;
@@ -344,7 +342,7 @@ body {
 .title__segment--lower-2 {
   position: relative;
   height: 100%;
-  width: 18vw;
+  width: 16vw;
   background-image: var(--band-sec-gradient);
 }
 
@@ -353,29 +351,30 @@ body {
   position: absolute;
   left: -1.8vw;
   display: block;
-  height: 100%;
+  height: 101%;
   width: 4.4vw;
   background-image: var(--band-sec-gradient);
   transform: skewX(var(--skew));
 }
 
-.title__segment--lower-3 {
-  position: relative;
-  height: 100%;
-  width: 35vw;
-  border-bottom: 5px solid $sec-color;
-  background-color: $main-color-d;
-}
-
-.title__segment--lower-3::before {
+.title__segment--lower-2::after {
   content: '';
   position: absolute;
-  left: -2.2vw;
+  left: 13.8vw;
   display: block;
   height: 100%;
   width: 4.4vw;
-  background-color: $main-color-d;
+  background-image: var(--band-sec-gradient);
   transform: skewX(var(--skew));
+  z-index: 1;
+}
+
+.title__segment--lower-3 {
+  position: relative;
+  height: 100%;
+  width: 37vw;
+  border-bottom: 5px solid $sec-color;
+  background-color: $main-color-d;
 }
 
 section:not([class~=title]) {
