@@ -58,6 +58,7 @@ body {
   font-weight: bold;
   transition: opacity $transition-time ease-in-out;
   background-color: $color-bg;
+  overflow: hidden;
 }
 
 .page__content {
@@ -79,6 +80,7 @@ body {
   color: #fff;
   transition: opacity $transition-time ease-in-out;
   background-color: $color-bg;
+  overflow: hidden;
 }
 
 .progress-bar__container {
@@ -238,6 +240,7 @@ body {
   display: flex;
   height: 10%;
   margin-top: 3%;
+  overflow: hidden;
 }
 
 .title__segment--center {
@@ -255,6 +258,7 @@ body {
 .title__segment--lower {
   display: flex;
   height: 10%;
+  overflow: hidden;
 }
 
 .title__segment--under {
