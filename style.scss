@@ -16,6 +16,9 @@ $color-text-light: #000;
 $color-text: $color-text-light;
 $color-bg: $color-bg-light;
 
+$transition-time: 300ms;
+$transition-time-half: $transition-time / 2;
+
 $image-bg: none;
 
 html, body {
@@ -52,7 +55,7 @@ body {
   height: 6em;
   color: #fff;
   font-weight: bold;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity $transition-time ease-in-out;
   background-color: $color-bg;
 }
 
@@ -73,8 +76,24 @@ body {
   justify-content: stretch;
   height: 4em;
   color: #fff;
-  transition: opacity 500ms;
+  transition: opacity $transition-time ease-in-out;
   background-color: $color-bg;
+}
+
+.progress-bar__container {
+  display: block;
+  height: 0.6vh;
+  width: 100vw;
+  background-color: $main-color-l;
+
+  & > .progress-bar {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: $main-color-dd;
+    will-change: transform;
+    transition: transform $transition-time ease-in-out;
+  }
 }
 
 .header--none {
@@ -135,7 +154,7 @@ body {
 .header__title {
   opacity: 0;
   will-change: opacity;
-  transition: opacity 150ms ease-in-out;
+  transition: opacity $transition-time-half ease-in-out;
 }
 
 .footer--long {
@@ -364,7 +383,7 @@ section:not([class~=title]) {
   top: 0;
   left: 0;
   transform: translateX(100vw);
-  transition: transform 300ms ease-in-out;
+  transition: transform $transition-time ease-in-out;
   background-color: $color-bg;
 }
 
@@ -409,7 +428,7 @@ a:hover {
 .slide__frame {
   opacity: 0;
   will-change: opacity;
-  transition: opacity .4s;
+  transition: opacity $transition-time;
 }
 
 .slide__frame.show {

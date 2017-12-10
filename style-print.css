@@ -71,4 +71,8 @@
     *[hidden] {
         display: none !important;
     }
+
+    .progress-bar {
+        display: none;
+    }
 }
