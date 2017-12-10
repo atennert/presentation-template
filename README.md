@@ -10,6 +10,7 @@ This is a template for presentations written in HTML, JavaScript and CSS. I know
 * Compile the style.scss to style.css
 * Add your content to the index.html file
 * Open the index.html file in your browser
+* (Simple layout change: change the main and secondary color in the top of the style.scss and recompile it)
 
 ## Features
 * Fancy layout
