@@ -29,6 +29,7 @@ This is what the template looks like. Of course, it can be customized to whateve
   * Swipe gestures (for touch devices): left and right swipe
 * Automatically generated table of contents with linking to slides
 * Page header and footer are not shown on title page
+* Progress bar at the bottom
 * Printing style sheet, which removes the fancy stuff, so it's possible to create a 'clean' print version
 * The slides are referenced by the hash number in the URL. It can be used to jump to pages directly
 

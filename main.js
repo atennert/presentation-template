@@ -3,10 +3,13 @@
 const FIELD_CHAPTER_NUMBER = document.querySelector('.header--short'),
   FIELD_CHAPTER_TITLE = document.querySelector('.header__title'),
   FIELD_PAGE_NUMBER = document.querySelector('.footer--short'),
-  SLIDES = document.querySelectorAll('section:not([hidden])');
+  SLIDES = document.querySelectorAll('section:not([hidden])'),
+  PROGRESS_BAR_CONTAINER = document.querySelector('.progress-bar__container');
+  
 
 let currentSlide = 0,
-  slideFrames;
+  slideFrames,
+  progressBar;
 
 // swipe gesture handling, detect swipes to left and right
 function swipedetect(touchsurface, callback){
@@ -89,12 +92,16 @@ function transitionSlide(oldSlide, newSlide) {
       SLIDES[oldSlide].style.removeProperty('transform');
     }
 
+    // set and show next slide
     currentSlide = newSlide;
     window.location.hash = newSlide;
     const slide = SLIDES[newSlide];
     slide.style.transform = 'translateX(0)';
 
-    // update displayed data
+    // set progress bar
+    progressBar.style.transform = `translateX(${-100 + 100 * newSlide / (SLIDES.length-1)}%)`;
+
+    // update header text
     FIELD_CHAPTER_NUMBER.textContent = slide.dataset.chNr;
     const titleElem = slide.querySelector('.section__title h1');
     if (titleElem && titleElem.textContent !== FIELD_CHAPTER_TITLE.textContent) {
@@ -181,6 +188,12 @@ if (!!tableOfContents) {
   }
   tableOfContents.appendChild(tocFragment);
 }
+
+// setup progress bar
+progressBar = document.createElement('div');
+progressBar.classList.add('progress-bar');
+progressBar.style.transform = 'translateX(-100%)';
+PROGRESS_BAR_CONTAINER.appendChild(progressBar);
 
 // load first/requested slide
 transitionSlide(undefined, pageToLoad);
