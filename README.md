@@ -25,8 +25,8 @@ This is a template for presentations written in HTML, JavaScript and CSS. I know
   * Swipe gestures (for touch devices): left and right swipe
 * Automatically generated table of contents with linking to slides
 * Page header and footer are not shown on title page
-* Printing style sheet, which removes the fancy stuff, so you can create a 'clean' print version
-* The slides are referenced by the hash number in the URL. You'll see it change when changing the slides. It can be used to jump to pages directly.
+* Printing style sheet, which removes the fancy stuff, so it's possible to create a 'clean' print version
+* The slides are referenced by the hash number in the URL. It can be used to jump to pages directly
 
 ## Introduction to writing slides
 It's only necessary to work in the `page__content` element and set title stuff in the footer if you like.
