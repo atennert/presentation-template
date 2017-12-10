@@ -2,6 +2,10 @@
 
 This is a template for presentations written in HTML, JavaScript and CSS. I know, this isn't the first one. There are other options out there. I know of at least one. This other one used libraries though and I found it to be to complicated to spend time on, so I created this.
 
+## Template preview
+This is what the template looks like. Of course, it can be customized to whatever is needed.
+![title preview](preview-title.png) ![slide preview](preview-slide.png)
+
 ## Requirements
 * Sass compiler, to compile the scss file
 * Modern browser to show the presentation (I've tested with Chrome and Opera)
