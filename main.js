@@ -147,38 +147,40 @@ function loadHashFromAddress(source) {
 const pageToLoad = loadHashFromAddress(window);
 
 // generate table of contents and chapter numbers
-let tableOfContents = document.querySelector('.table-of-contents'),
-  tocFragment = document.createDocumentFragment(),
-  tocEntry, tocLink, slideNr, slide, chapterNr = 0, lastChapter = '',
-  slidesCount = SLIDES.length, slideTitleElem, slideHeaderElem, chapterNrElem;
-for (slideNr = 0; slideNr < slidesCount; slideNr++) {
-  slide = SLIDES[slideNr];
-  // mark slides up to the current one as 'shown'
-  if (slideNr <= pageToLoad) {
-    slide.style.transform = 'translateX(0)';
-  }
-  slide.style.zIndex = slideNr;
-  // table of contents entries must be a chapter and it must be a different chapter then before
-  if (slide.classList.contains('chapter')) {
-    slideTitleElem = slide.querySelector('.section__title h1');
-    slideHeaderElem = slide.querySelector('.section__title');
-    if (slideTitleElem.textContent !== lastChapter) {
-      tocEntry = document.createElement('li');
-      tocLink = document.createElement('a');
-      tocLink.textContent = slideTitleElem.textContent;
-      tocLink.setAttribute('href', `#${slideNr}`)
-      tocEntry.appendChild(tocLink);
-      tocFragment.appendChild(tocEntry);
-      lastChapter = slideTitleElem.textContent;
-      chapterNr++;
+let tableOfContents = document.querySelector('.table-of-contents');
+if (!!tableOfContents) {
+  let tocFragment = document.createDocumentFragment(),
+    tocEntry, tocLink, slideNr, slide, chapterNr = 0, lastChapter = '',
+    slidesCount = SLIDES.length, slideTitleElem, slideHeaderElem, chapterNrElem;
+  for (slideNr = 0; slideNr < slidesCount; slideNr++) {
+    slide = SLIDES[slideNr];
+    // mark slides up to the current one as 'shown'
+    if (slideNr <= pageToLoad) {
+      slide.style.transform = 'translateX(0)';
     }
-    slide.dataset.chNr = chapterNr;
-    chapterNrElem = document.createElement('div');
-    chapterNrElem.textContent = chapterNr;
-    slideHeaderElem.insertBefore(chapterNrElem, slideTitleElem);
+    slide.style.zIndex = slideNr;
+    // table of contents entries must be a chapter and it must be a different chapter then before
+    if (slide.classList.contains('chapter')) {
+      slideTitleElem = slide.querySelector('.section__title h1');
+      slideHeaderElem = slide.querySelector('.section__title');
+      if (slideTitleElem.textContent !== lastChapter) {
+        tocEntry = document.createElement('li');
+        tocLink = document.createElement('a');
+        tocLink.textContent = slideTitleElem.textContent;
+        tocLink.setAttribute('href', `#${slideNr}`)
+        tocEntry.appendChild(tocLink);
+        tocFragment.appendChild(tocEntry);
+        lastChapter = slideTitleElem.textContent;
+        chapterNr++;
+      }
+      slide.dataset.chNr = chapterNr;
+      chapterNrElem = document.createElement('div');
+      chapterNrElem.textContent = chapterNr;
+      slideHeaderElem.insertBefore(chapterNrElem, slideTitleElem);
+    }
   }
+  tableOfContents.appendChild(tocFragment);
 }
-tableOfContents.appendChild(tocFragment);
 
 // load first/requested slide
 transitionSlide(undefined, pageToLoad);
