@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-print.css" media="print">
+    <title>Main title - Subtitle</title>
+</head>
+<body>
+    <!-- The 'page__header' is a header line that will be shown on every slide but the title. -->
+    <header class="page__header" style="opacity:0">
+        <div class="header--none"></div>
+        <!-- The short header contains the chapter number -->
+        <div class="header--short"></div>
+        <!-- The 'section__title's from the slides will be shown in this 'header__title' -->
+        <div class="header--long"><span class="header__title"></span></div>
+    </header>
+    <div class="page__content">
+    <!-- Every section is a slide. The slide with class 'title' is the special first slide without page header and footer.
+        It's immediately shown and the target when there's no slide number in the URL. -->
+        <section class="title">
+            <div class="title__segment--top">
+                <!-- This is just for drawing -->
+                <div class="title__segment--top-1"></div>
+                <div class="title__segment--top-2"></div>
+                <div class="title__segment--top-3"></div>
+            </div>
+            <div class="title__segment--center">
+                <h1>Main Title</h1>
+                <h2>Subtitle</h2>
+                <img class="title__logo" src="images/logo.svg" alt="Cool logo">
+            </div>
+            <div class="title__segment--lower">
+                <!-- This is just for drawing -->
+                <div class="title__segment--lower-1"></div>
+                <div class="title__segment--lower-2"></div>
+                <div class="title__segment--lower-3"></div>
+            </div>
+            <div class="title__segment--under">
+                <p class="author">My<br>Name</p>
+                <time datetime="2017-10-04">14. Oktober 2017</time>
+            </div>
+        </section>
+        <section>
+            <!-- every section marked with class "chapter" will be added to the table of contents. -->
+            <header class="section__title"><h1>Table of contents</h1></header>
+            <ol class="table-of-contents">
+                <!-- Content will be generated -->
+            </ol>
+        </section>
+        <!-- All content slides need to be marked as chapter and need to have a setion title -->
+        <section class="chapter">
+            <!-- The section title will not be shown in the page, but in the header -->
+            <header class="section__title"><h1>Topic 1</h1></header>
+            <h1>Subtopic 1</h2>
+            <p>Some random information</p>
+        </section>
+        <section class="chapter">
+            <header class="section__title"><h1>Topic 1</h1></header>
+            <h1>Subtopic 2</h1>
+            <!-- slide frames are hidden at first, but shown on 'next' -->
+            <p class="slide__frame">Some more information</p>
+            <p class="slide__frame">And even more information</p>
+        </section>
+        <section class="chapter">
+            <header class="section__title"><h1>Topic 2</h1></header>
+            <h1>Subtopic</h1>
+            <p>Some really funny information</p>
+        </section>
+    </div>
+    <!-- The 'page__footer' is a footer line that will be shown on every slide but the title. -->
+    <footer class="page__footer" style="opacity:0">
+        <div class="footer--long">Main title - Subtitle</div>
+        <!-- The short footer contains the slide number -->
+        <div class="footer--short"></div>
+        <div class="footer--none"></div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
