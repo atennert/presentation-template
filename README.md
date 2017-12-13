@@ -32,6 +32,7 @@ This is what the template looks like. Of course, it can be customized to whateve
 * Progress bar at the bottom
 * Printing style sheet, which removes the fancy stuff, so it's possible to create a 'clean' print version
 * The slides are referenced by the hash number in the URL. It can be used to jump to pages directly
+* Mark sections, that shall not show up with the 'hidden' attribute
 
 ## Introduction to writing slides
 It's only necessary to work in the `page__content` element and set title stuff in the footer if you like.
