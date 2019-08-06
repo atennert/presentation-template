@@ -1,79 +1,70 @@
 
 @media print {
-    *, *::before, *::after {
-        background: none !important;
-    }
+  *, *::before, *::after {
+    background: none !important;
+  }
 
-    body {
-        font-size: 11px;
-        overflow: unset;
-        position: unset;
-    }
+  body {
+    font-size: 11px;
+    overflow: unset;
+    position: unset;
+  }
 
-    .page__header,
-    .page__footer,
-    .title__logo {
-        display: none;
-    }
+  .page__content {
+    position: static;
+  }
 
-    .page__content {
-        position: static;
-    }
+  .page__content,
+  .section__title {
+    display: block;
+    color: #000 !important;
+  }
 
-    .page__content,
-    .section__title {
-        display: block;
-    }
+  .section__title > * {
+    display: inline-block;
+    margin-right: 0.3em;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
 
-    .section__title > * {
-        display: inline-block;
-        margin-right: 0.3em;
-        font-weight: bold;
-        font-size: 1.3em;
-    }
+  section {
+    page-break-after: always;
+    font-size: .8em;
+    position: static !important;
+    transform: unset !important;
+    background: unset;
+    transition: unset;
+    z-index: unset !important;
+    top: unset;
+    left: unset;
+  }
 
-    .title__segment--top-1,
-    .title__segment--top-3,
-    .title__segment--lower-1,
-    .title__segment--lower-3 {
-        border: none;
-    }
+  section:not([class~=title]) h1 {
+    font-size: 1.1em;
+  }
 
-    .title__segment--center,
-    .title__segment--under {
-        color: black;
-    }
+  .slide__frame {
+    opacity: 1;
+  }
 
-    section {
-        display: block !important;
-        page-break-after: always;
-        font-size: .8em;
-        position: static !important;
-        transform: unset !important;
-        background: unset;
-        transition: unset;
-        z-index: unset !important;
-        top: unset;
-        left: unset;
-    }
+  a {
+    color: #333;
+    font-style: italic;
+  }
 
-    section:not([class~=title]) h1 {
-        font-size: 1.1em;
-    }
+  code {
+    font-size: .7em
+  }
 
-    .slide__frame {
-        opacity: 1;
-    }
+  *[hidden] {
+    display: none !important;
+  }
 
-    code {
-        font-size: .7em
-    }
+  .progress-bar {
+    display: none;
+  }
 
-    *[hidden] {
-        display: none !important;
-    }
-
-    .progress-bar {
-        display: none;
-    }
+  .comment {
+    color: #333;
+  }
 }

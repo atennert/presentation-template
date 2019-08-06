@@ -1,9 +1,6 @@
 'use strict';
 
-const FIELD_CHAPTER_NUMBER = document.querySelector('.header--short'),
-  FIELD_CHAPTER_TITLE = document.querySelector('.header__title'),
-  FIELD_PAGE_NUMBER = document.querySelector('.footer--short'),
-  SLIDES = document.querySelectorAll('section:not([hidden])'),
+const SLIDES = document.querySelectorAll('section:not([hidden])'),
   PROGRESS_BAR_CONTAINER = document.querySelector('.progress-bar__container');
   
 
@@ -76,14 +73,6 @@ function showNextFrame() {
   return false;
 }
 
-// react to the end of the header text fade out -> fade in the next header text
-function textFadeoutEnd() {
-  FIELD_CHAPTER_TITLE.removeEventListener('transitionend', textFadeoutEnd);
-  const titleElem = SLIDES[currentSlide].querySelector('.section__title h1');
-  FIELD_CHAPTER_TITLE.textContent = titleElem.textContent;
-  requestAnimationFrame(() => FIELD_CHAPTER_TITLE.style.opacity = 1);
-}
-
 // transition from slide to slide
 function transitionSlide(oldSlide, newSlide) {
   requestAnimationFrame(() => {
@@ -100,36 +89,8 @@ function transitionSlide(oldSlide, newSlide) {
 
     // set progress bar
     progressBar.style.transform = `translateX(${-100 + 100 * newSlide / (SLIDES.length-1)}%)`;
-
-    // update header text
-    FIELD_CHAPTER_NUMBER.textContent = slide.dataset.chNr;
-    const titleElem = slide.querySelector('.section__title h1');
-    if (titleElem && titleElem.textContent !== FIELD_CHAPTER_TITLE.textContent) {
-      if (~~FIELD_CHAPTER_TITLE.style.opacity === 0) {
-        // no text shown => show text directly
-        FIELD_CHAPTER_TITLE.textContent = titleElem.textContent;
-        FIELD_CHAPTER_TITLE.style.opacity = 1;
-      } else {
-        // already a header text there => fade out the old one and then fade in the new one
-        FIELD_CHAPTER_TITLE.addEventListener('transitionend', textFadeoutEnd);
-        FIELD_CHAPTER_TITLE.style.opacity = 0;
-      }
-    }
-    FIELD_PAGE_NUMBER.textContent = newSlide;
     slideFrames = Array.prototype.slice.call(slide.querySelectorAll('.slide__frame:not(.show)'));
-    adjustHeaderAndFooter();
   });
-}
-
-// don't show header and footer on the title page
-function adjustHeaderAndFooter() {
-  if (currentSlide === 0) {
-    document.querySelector('.page__header').style.opacity = '0';
-    document.querySelector('.page__footer').style.opacity = '0';
-  } else {
-    document.querySelector('.page__header').style.removeProperty('opacity');
-    document.querySelector('.page__footer').style.removeProperty('opacity');
-  }
 }
 
 // evaluate links from one slide to another (mostly table of contents)
@@ -158,7 +119,7 @@ let tableOfContents = document.querySelector('.table-of-contents');
 if (!!tableOfContents) {
   let tocFragment = document.createDocumentFragment(),
     tocEntry, tocLink, slideNr, slide, chapterNr = 0, lastChapter = '',
-    slidesCount = SLIDES.length, slideTitleElem, slideHeaderElem, chapterNrElem;
+    slidesCount = SLIDES.length, slideTitleElem, slideHeaderElem;
   for (slideNr = 0; slideNr < slidesCount; slideNr++) {
     slide = SLIDES[slideNr];
     // mark slides up to the current one as 'shown'
@@ -181,9 +142,7 @@ if (!!tableOfContents) {
         chapterNr++;
       }
       slide.dataset.chNr = chapterNr;
-      chapterNrElem = document.createElement('div');
-      chapterNrElem.textContent = chapterNr;
-      slideHeaderElem.insertBefore(chapterNrElem, slideTitleElem);
+      slideTitleElem.textContent = `${chapterNr} ${slideTitleElem.textContent}`;
     }
   }
   tableOfContents.appendChild(tocFragment);
@@ -210,9 +169,9 @@ document.addEventListener('keyup', (event) => {
 
 // set listener for mouse wheel
 document.addEventListener('wheel', (event) => {
-  if (event.wheelDeltaY > 0) {
+  if (event.deltaY < 0) {
     slideLeft();
-  } else if (event.wheelDeltaY < 0) {
+  } else if (event.deltaY > 0) {
     slideRight();
   }
 });
@@ -226,5 +185,17 @@ swipedetect(document.querySelector('body'), swipedir => {
   }
 });
 
+function getUtcDateString(date) {
+  const pad = (n) => n < 10 ? `0${n}` : n;
+  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`;
+}
+
+
 // set listener for interpresentation links
 window.addEventListener('hashchange', clickSlideshowLink);
+
+// set the current date
+const time = document.querySelector('time'),
+  currentDate = new Date();
+time.textContent = currentDate.toLocaleDateString('de-DE', {year: 'numeric', month: 'long', day: 'numeric'});
+time.setAttribute('datetime', getUtcDateString(currentDate));
