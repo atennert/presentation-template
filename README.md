@@ -2,10 +2,6 @@
 
 This is a template for presentations written in HTML, JavaScript and CSS. I know, this isn't the first one. There are other options out there. I've seen reveal.js and another one where I don't know the name. Those others used libraries though and I found them to be to complicated to spend time on, so I created this.
 
-## Template preview
-This is what the template looks like. Of course, it can be customized to whatever is needed.
-![title preview](preview-title.png) ![slide preview](preview-slide.png)
-
 ## Requirements
 * Sass compiler, to compile the scss file
 * Modern browser to show the presentation (I've tested with Chrome and Opera)
@@ -17,7 +13,6 @@ This is what the template looks like. Of course, it can be customized to whateve
 * (Simple layout change: change the main and secondary color in the top of the style.scss and recompile it)
 
 ## Features
-* Fancy layout
 * Basic animations
   * Slides coming in from the right when showing next slide
   * Slides go back to the right when showing previous slide
