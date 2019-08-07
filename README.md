@@ -17,13 +17,11 @@ This is a template for presentations written in HTML, JavaScript and CSS. I know
   * Slides coming in from the right when showing next slide
   * Slides go back to the right when showing previous slide
   * Parts of the slide content can be faded-in one after another with the 'next' action
-  * Fade-in animation for the chapter title
 * Various actions for 'next' and 'previous'
   * Keyboard: right and left buttons
   * Mouse wheel: up and down (useful for quick skimming over the content)
   * Swipe gestures (for touch devices): left and right swipe
 * Automatically generated table of contents with linking to slides
-* Page header and footer are not shown on title page
 * Progress bar at the bottom
 * Printing style sheet, which removes the fancy stuff, so it's possible to create a 'clean' print version
 * The slides are referenced by the hash number in the URL. It can be used to jump to pages directly
